@@ -6,7 +6,9 @@ import 'package:path_provider/path_provider.dart' as syspaths;
 import 'package:path/path.dart' as path;
 
 class ImageInput extends StatefulWidget {
-  const ImageInput({Key? key}) : super(key: key);
+  final Function onSelectImage;
+
+  ImageInput(this.onSelectImage);
 
   @override
   State<ImageInput> createState() => _ImageInputState();
