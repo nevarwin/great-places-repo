@@ -31,14 +31,14 @@ class _ImageInputState extends State<ImageInput> {
 
     setState(() {
       // updating the _storedImage
-      _storedImage = File(imageFile!.path);
+      _storedImage = File(imageFile.path);
     });
 
     // this access the app directory
     final appDir = await syspaths.getApplicationDocumentsDirectory();
 
     // this gets the image file name
-    final fileName = path.basename(imageFile!.path);
+    final fileName = path.basename(imageFile.path);
 
     // copy the file into appDir and keep the file name
     // we need to enter the path in which we want to copy to,
