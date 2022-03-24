@@ -37,6 +37,7 @@ class DBHelper {
     sqlDb.insert(
       table,
       data,
+      conflictAlgorithm: sql.ConflictAlgorithm.replace,
     );
   }
 }
