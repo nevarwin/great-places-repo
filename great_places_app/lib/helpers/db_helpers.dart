@@ -2,10 +2,7 @@ import 'package:sqflite/sqflite.dart' as sql;
 import 'package:path/path.dart' as path;
 
 class DBHelper {
-  static Future<void> insert(
-    String table,
-    Map<String, Object> data,
-  ) async {
+  static Future<sql.Database> database() async {
     // create database
     // path where you may store your file
     // a folder where we store the database
@@ -14,7 +11,7 @@ class DBHelper {
     // allows us open database
     // either open an existing or creates a new one
     // we need path with database name
-    final sqlDb = await sql.openDatabase(
+    return sql.openDatabase(
       // from path package
       path.join(
         dbPath,
@@ -32,11 +29,25 @@ class DBHelper {
       },
       version: 1,
     );
-    sqlDb.insert(
+  }
+
+  static Future<void> insert(
+    String table,
+    Map<String, Object> data,
+  ) async {
+    final db = await DBHelper.database();
+    db.insert(
       table,
       data,
       // overwrite existing object
       conflictAlgorithm: sql.ConflictAlgorithm.replace,
     );
+  }
+
+  static Future<List<Map<String, dynamic>>> getData(
+    String table,
+  ) async {
+    final db = await DBHelper.database();
+    return db.query(table);
   }
 }
