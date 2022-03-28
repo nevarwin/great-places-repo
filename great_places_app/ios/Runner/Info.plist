@@ -6,6 +6,12 @@
 	<string>We need to access your photo library</string>
 	<key>NSCameraUsageDescription</key>
 	<string>We need to access your camera</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We need to access your location</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>We need to access your location</string>
+	<key>UIBackgroundModes</key>
+	<string>location</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
