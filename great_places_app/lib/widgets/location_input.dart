@@ -55,7 +55,7 @@ class _LocationInputState extends State<LocationInput> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             FlatButton.icon(
-              onPressed: () {},
+              onPressed: _getCurrentUserLocation,
               icon: const Icon(Icons.location_on),
               label: const Text('Current Location'),
               color: Theme.of(context).primaryColor,
