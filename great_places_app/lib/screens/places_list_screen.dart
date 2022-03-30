@@ -56,6 +56,9 @@ class PlacesListScreen extends StatelessWidget {
                               title: Text(
                                 greatPlaces.items[i].title,
                               ),
+                              subtitle: Text(greatPlaces
+                                  .items[i].location!.address
+                                  .toString()),
                             ),
                           ),
                   ),
