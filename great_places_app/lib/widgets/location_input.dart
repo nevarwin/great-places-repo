@@ -6,7 +6,9 @@ import '../helpers/location_helpers.dart';
 import '../screens/map_screen.dart';
 
 class LocationInput extends StatefulWidget {
-  const LocationInput({Key? key}) : super(key: key);
+  LocationInput(this.onSelectPlace);
+
+  final Function onSelectPlace;
 
   @override
   State<LocationInput> createState() => _LocationInputState();
@@ -17,15 +19,41 @@ class _LocationInputState extends State<LocationInput> {
   Widget build(BuildContext context) {
     late String _previewImageUrl;
 
-    Future<void> _getCurrentUserLocation() async {
-      final locData = await Location().getLocation();
+    // refactored method for reuse
+    void _showPreview(
+      double lat,
+      double lng,
+    ) {
       final staticMapImageUrl = LocationHelper.generateLocationPreviewImage(
-        latitude: locData.latitude,
-        longitude: locData.longitude,
+        latitude: lat,
+        longitude: lng,
       );
+
+      // setState to update the ui for image changes
       setState(() {
         _previewImageUrl = staticMapImageUrl;
       });
+    }
+
+    Future<void> _getCurrentUserLocation() async {
+      // try catch method if the user deny the permission
+      try {
+        final locData = await Location().getLocation();
+
+        // use the refactored method for not repeating code
+        _showPreview(
+          locData.latitude!,
+          locData.longitude!,
+        );
+
+        // data need to pass into the add_place_screen to show the place
+        widget.onSelectPlace(
+          locData.latitude,
+          locData.longitude,
+        );
+      } catch (error) {
+        return;
+      }
     }
 
     Future<void> _selectOnMap() async {
@@ -40,6 +68,18 @@ class _LocationInputState extends State<LocationInput> {
       if (selectedLocation == null) {
         return;
       }
+
+      // use the refactored method for not repeating code
+      _showPreview(
+        selectedLocation.latitude,
+        selectedLocation.longitude,
+      );
+
+      // method to retreive the image
+      widget.onSelectPlace(
+        selectedLocation.latitude,
+        selectedLocation.longitude,
+      );
     }
 
     return Column(
