@@ -18,11 +18,13 @@ class GreatPlaces with ChangeNotifier {
     File pickedImage,
     PlaceLocation pickedLocation,
   ) async {
+    // getting the readable address from LocationHelper
     final address = await LocationHelper.getPlaceAddress(
       pickedLocation.latitude,
       pickedLocation.longitude,
     );
 
+    // variable to use the address and to be use in newPlace
     final updatedLocation = PlaceLocation(
       latitude: pickedLocation.latitude,
       longitude: pickedLocation.longitude,
