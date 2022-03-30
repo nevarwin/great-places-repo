@@ -23,8 +23,9 @@ class DBHelper {
       // and run some code to initialize the database
       onCreate: (db, version) {
         // command that can be seen at pubdev
+        // REAL = double
         return db.execute(
-          'CREATE TABLE user_places(id TEXT PRIMARY KEY, title TEXT, image TEXT)',
+          'CREATE TABLE user_places(id TEXT PRIMARY KEY, title TEXT, image TEXT, loc_lat REAL, loc_lng REAL, address TEXT)',
         );
       },
       version: 1,
