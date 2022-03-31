@@ -13,6 +13,11 @@ class GreatPlaces with ChangeNotifier {
     return [..._items];
   }
 
+  // filtering id for the place_detail_screen
+  Place findById(String id) {
+    return _items.firstWhere((place) => place.id == id);
+  }
+
   Future<void> addPlace(
     String pickedTitle,
     File pickedImage,
