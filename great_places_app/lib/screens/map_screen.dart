@@ -4,8 +4,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../models/place.dart';
 
 class MapScreen extends StatefulWidget {
-  const MapScreen({Key? key, 
-    
+  const MapScreen({
+    Key? key, 
     this.initialLocation = const PlaceLocation(
       latitude: 37.422,
       longitude: -122.084,
@@ -31,7 +31,6 @@ class _MapScreenState extends State<MapScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Set<Marker> mySet = {};
     return Scaffold(
       appBar: AppBar(
         title: const Text('Your Map'),

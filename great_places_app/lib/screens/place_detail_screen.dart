@@ -20,7 +20,7 @@ class PlaceDetailScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Container(
+          SizedBox(
             height: 250,
             width: double.infinity,
             child: Image.file(
@@ -43,7 +43,7 @@ class PlaceDetailScreen extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          FlatButton(
+          ElevatedButton(
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
@@ -56,7 +56,9 @@ class PlaceDetailScreen extends StatelessWidget {
               );
             },
             child: const Text('View on Map'),
-            textColor: Theme.of(context).primaryColor,
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Theme.of(context).colorScheme.primary,
+            ),
           ),
         ],
       ),
