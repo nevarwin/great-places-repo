@@ -8,7 +8,7 @@ import 'package:path/path.dart' as path;
 class ImageInput extends StatefulWidget {
   final Function onSelectImage;
 
-  ImageInput(this.onSelectImage);
+  const ImageInput({Key? key, required this.onSelectImage});
 
   @override
   State<ImageInput> createState() => _ImageInputState();
@@ -76,8 +76,10 @@ class _ImageInputState extends State<ImageInput> {
           width: 10,
         ),
         Expanded(
-          child: FlatButton.icon(
-            textColor: Theme.of(context).primaryColor,
+          child: TextButton.icon(
+            style: TextButton.styleFrom(
+              foregroundColor: Theme.of(context).primaryColor,
+            ),
             onPressed: _takePicture,
             label: const Text('Take Picture'),
             icon: const Icon(

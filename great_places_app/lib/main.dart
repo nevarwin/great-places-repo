@@ -22,7 +22,11 @@ class MyApp extends StatelessWidget {
           title: 'Flutter Demo',
           theme: ThemeData(
             primarySwatch: Colors.indigo,
-            accentColor: Colors.amber,
+            colorScheme: ColorScheme.fromSwatch(
+              primarySwatch: Colors.indigo,
+            ).copyWith(
+              secondary: Colors.amber,
+            ),
           ),
           home: const PlacesListScreen(),
           routes: {
